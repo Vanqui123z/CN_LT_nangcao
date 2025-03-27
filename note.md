@@ -1,4 +1,14 @@
-Dưới đây là giải thích chi tiết về từng thư mục trong dự án của bạn:
+Dưới đây là giải thích chi tiết về từng thư mục trong dự án :
+
+
+
+## Chức Năng Chính
+
+Quản lý sự kiện cá nhân
+Đăng ký/Đăng nhập người dùng
+CRUD (Create, Read, Update, Delete) sự kiện
+Phân quyền người dùng
+Lọc và tìm kiếm sự kiện
 
 ---
 
@@ -70,8 +80,8 @@ Dưới đây là giải thích chi tiết về từng thư mục trong dự án
 
 ---
 
-## **Frontend (Giao diện người dùng - nếu có tách biệt frontend riêng)**  
-
+## **Frontend (Giao diện người dùng - nếu có tách biệt frontend riêng )**  
+  Phần này sử dụng  `react js` kết hợp với `ejs`
 ### **1. `public/`**  
 - Chứa tài nguyên tĩnh như:
   - **CSS**: Các file stylesheet.
@@ -82,11 +92,13 @@ Dưới đây là giải thích chi tiết về từng thư mục trong dự án
 
 ### **2. `src/`**  
 - Chứa mã nguồn chính của frontend, có thể bao gồm:
-  - **components/**: Các thành phần giao diện (React, Vue, v.v.).
-  - **pages/**: Các trang chính của ứng dụng.
+  - **components/**: Các thành phần giao diện  (phần header, footer ) 
+  - **pages/**: Các trang chính của ứng dụng  (phần main) 
   - **services/**: Gọi API từ backend.
-  - **App.js**: File chính của frontend.
+  - **App.js**: File chính của frontend. ( là layout của trang we:  header, footer giữ nguyên chỉ thay đổi phần main )
 
 ---
 
-Bạn có muốn tôi tạo các file mẫu cho từng thư mục không? 🚀
+
+
+## khi đẩy lên git cần tạo file .gitignore để không đẩy lên những thư mục không cần thiết 
