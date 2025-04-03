@@ -95,7 +95,7 @@ Lọc và tìm kiếm sự kiện
   - **components/**: Các thành phần giao diện  (phần header, footer ) 
   - **pages/**: Các trang chính của ứng dụng  (phần main) 
   - **services/**: Gọi API từ backend.
-  - **App.js**: File chính của frontend. ( là layout của trang we:  header, footer giữ nguyên chỉ thay đổi phần main )
+  - **App.ejs**: File chính của frontend. ( là layout của trang we:  header, footer giữ nguyên chỉ thay đổi phần main )
 
 ---
 

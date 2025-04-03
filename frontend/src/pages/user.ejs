@@ -1,0 +1,18 @@
+<h1><%= title %></h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Tuổi</th>
+        <th>Email</th>
+    </tr>
+    <% users.forEach(user => { %>
+        <tr>
+            <td><%= user._id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.age %></td>
+            <td><%= user.email %></td>
+        </tr>
+    <% }) %>
+</table>
+<a href="/">Quay lại trang chủ</a>

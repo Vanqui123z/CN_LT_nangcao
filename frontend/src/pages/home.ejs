@@ -1,0 +1,21 @@
+   <h1><%= title %></h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Tiêu đề</th>
+            <th>Mô tả</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+            <th>Màu</th>
+        </tr>
+        <% events.forEach(event => { %>
+            <tr>
+                <td><%= event._id %></td>
+                <td><%= event.title %></td>
+                <td><%= event.description %></td>
+                <td><%= event.startTime.toLocaleString() %></td>
+                <td><%= event.endTime.toLocaleString() %></td>
+            </tr>
+        <% }) %>
+    </table>
+    <a href="/">Quay lại trang chủ</a>
