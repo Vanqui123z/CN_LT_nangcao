@@ -8,10 +8,10 @@
             <th>Thời gian kết thúc</th>
             <th>Màu</th>
         </tr>
-        <% events.forEach(event => { %>
+        <% events.forEach(event => { %> <!-- lặp qua tất cả các events -->
             <tr>
-                <td><%= event._id %></td>
-                <td><%= event.title %></td>
+                <td><%= event._id %></td> 
+                <td><%= event.title %></td> <!-- lấy dữ liệu title của event -->
                 <td><%= event.description %></td>
                 <td><%= event.startTime.toLocaleString() %></td>
                 <td><%= event.endTime.toLocaleString() %></td>

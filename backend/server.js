@@ -3,12 +3,16 @@ const app = express()
 const port = 3000
 const path = require("path")
 const cors = require("cors");
+const expressLayouts = require('express-ejs-layouts');
 const routers = require("./routers/router")
 const connectDB = require("./config/db");
 
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../frontend/src"))
+app.use(expressLayouts);
+app.set('layout', 'app');
+
 
 connectDB();
 app.use(express.static(path.join(__dirname,"../frontend/public")))
