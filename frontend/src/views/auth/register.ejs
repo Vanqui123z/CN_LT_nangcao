@@ -1,0 +1,145 @@
+<link rel="stylesheet" href="/css/auth.css">
+<link rel="stylesheet" href="/css/register.css">
+
+
+
+<% if (error) { %>
+  <div class="notification-container">
+    <div class="notification">
+      <div class="icon">!</div>
+      <div class="message">
+        <%=error %>
+      </div>
+      <div class="close-btn">×</div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <% } %>
+  <% if (locals.flash && locals.flash.success) { %>
+    <div class="notification-container">
+      <div class="notification">
+        <div class="icon">*</div>
+        <div class="message">
+          <%= locals.flash.success %>
+        </div>
+        <div class="close-btn">×</div>
+        <div class="timerSuccess"></div>
+      </div>
+    </div>
+    <% } %>
+
+<div class="login_container">
+  <div class="login_image">
+    <img src="/images/backgroud_login.webp" alt="">
+  </div>
+  <div class="login-card">
+    <div class="logo-login-card">
+      <div class="logo">
+        <div class="logo-icon">
+          <img src="/images/logo.png" height="45" width="45" alt="logo">
+        </div>
+        <span class="logo-text">Calender Time</span>
+      </div>
+    </div>
+
+    <h2>Register</h2>
+    <form action="/auth/register" method="post" id="registrationForm">
+        <!-- Trường Email -->
+        <div class="form-group mt-2 ">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" aria-describedby="emailHelpId" required>
+          <small id="emailHelpId" class="form-text text-danger"></small>
+        </div>
+  
+        <!-- Trường Name (Tên) -->
+        <div class="form-group mt-2 ">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter your full name" aria-describedby="nameHelpId" required>
+          <small id="nameHelpId" class="form-text text-danger"></small>
+        </div>
+  
+        <!-- Trường Age (Tuổi) -->
+        <div class="form-group mt-2 ">
+          <label for="age">Age</label>
+          <input type="number" class="form-control" name="age" id="age" placeholder="Enter your age" aria-describedby="ageHelpId" min="18" required>
+          <small id="ageHelpId" class="form-text text-danger"></small>
+        </div>
+  
+        <!-- Trường Password (Mật khẩu) -->
+        <div class="form-group mt-2 ">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" aria-describedby="passwordHelpId"    required>
+          <small id="passwordHelpId" class="form-text text-danger"></small>
+        </div>
+  
+        <!-- Trường Password Again (Xác nhận mật khẩu) -->
+        <div class="form-group mt-2 ">
+          <label for="passwordAgain">Password Again</label>
+          <input type="password" class="form-control" name="passwordAgain" id="passwordAgain" placeholder="Confirm password" aria-describedby="passwordAgainHelpId" required>
+          <small id="passwordAgainHelpId" class="form-text text-danger"></small>
+        </div>
+  
+        <button type="submit" id="registerSubmit" class="btn btn-primary mt-3">Continue with email</button>
+    </form>
+    
+    
+    <div class="or-divider">OR</div>
+
+    <div class="signup-text">
+      <a href="/auth/login">Sign up</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("registrationForm");
+  const emailHelp = document.getElementById("emailHelpId");
+  const passwordAgainHelp = document.getElementById("passwordAgainHelpId");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Chặn submit mặc định
+
+    // Lấy dữ liệu từ form
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Kiểm tra password xác nhận trùng
+    if (data.password !== data.passwordAgain) {
+      passwordAgainHelp.textContent = "Mật khẩu xác nhận không trùng khớp.";
+      passwordAgainHelp.style.color = "red";
+      return;
+    } else {
+      passwordAgainHelp.textContent = "";
+    }
+
+    try {
+      const res = await fetch("/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        window.location.href = "/auth/login"; // Redirect nếu thành công
+      } else {
+        // Hiển thị lỗi
+        emailHelp.textContent = result.message || "Có lỗi xảy ra!";
+        emailHelp.style.color = "red";
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  });
+});
+
+</script>
+<script src="/js/register.js"></script>

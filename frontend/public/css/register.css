@@ -1,0 +1,120 @@
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: -320px;
+  width: 320px;
+  animation: slideIn 0.5s forwards, slideOut 0.5s 4.5s forwards;
+}
+
+.notification {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.notification .icon {
+  background-color: red;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.notification .message {
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+.notification .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #aaa;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.notification .timer,
+.notification .timerSuccess {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  animation: timer 5s linear forwards;
+}
+
+.notification .timer {
+  background-color: red;
+}
+
+.notification .timerSuccess {
+  background-color: green;
+}
+
+.is-invalid {
+  border: 1px solid red !important;
+}
+.is-valid {
+  border: 1px solid green !important;
+}
+
+
+@media (max-width: 992px) {
+  /* Ẩn ảnh ở tablet trở xuống */
+  .login_image {
+    display: none;
+  }
+
+  /* Căn giữa form */
+  .login_container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .login-card {
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+  }
+}
+
+
+@keyframes slideIn {
+  to { right: 20px; }
+}
+
+@keyframes slideOut {
+  to { right: -320px; }
+}
+
+@keyframes timer {
+  to { width: 0%; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .notification-container {
+    width: 280px;
+    animation: slideInMobile 0.5s forwards, slideOutMobile 0.5s 4.5s forwards;
+  }
+  
+  @keyframes slideInMobile {
+    to { right: 10px; }
+  }
+  
+  @keyframes slideOutMobile {
+    to { right: -280px; }
+  }
+}

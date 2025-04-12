@@ -1,0 +1,22 @@
+<div>
+    <h2 class="mb-4">TODOLIST</h2>
+    
+    <!-- Add Task Input -->
+    <div class="input-group mb-3">
+        <div class="input-group bg-light rounded-pill">
+            <input id="new-task" type="text" class="form-control border-0 bg-transparent rounded-pill" placeholder="Add your task">
+            <span class="input-group-text bg-transparent border-0">I</span>
+        </div>
+        <button onclick="addTodoItem()" class="btn btn-success rounded-circle ms-2" style="width: 40px; height: 40px;">+</button>
+    </div>
+    
+    <!-- Success Message -->
+    <div id="success-message" class="alert alert-success d-none mb-3">
+        Todo Item Created Successfully.
+    </div>
+    
+    <!-- Todo Items -->
+    <div id="todo-items">
+        <!-- Todo items will be populated by JavaScript -->
+    </div>
+</div>

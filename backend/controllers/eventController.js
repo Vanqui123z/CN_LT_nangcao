@@ -3,10 +3,11 @@ const Event = require("../models/eventModel")
 class eventController {
    async getEvent(req, res) {
       try {
+         
          const events = await Event.find();
-         res.render("pages/home", { title: "Home Page", events });
+         res.render("views/pages/home", { title: "Home Page", events });
       } catch (error) {
-         res.status(500).json({ message: "Lỗi khi lấy danh sách user", error });
+         res.status(500).json({ message: "Lỗi khi lấy danh sách event", error });
       }
    }
    createEvent(req, res) {
