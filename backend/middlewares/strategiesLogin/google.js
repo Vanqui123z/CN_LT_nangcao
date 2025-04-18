@@ -13,6 +13,7 @@ module.exports = (passport) => {
               let user = await Users.findOne({ email: profile.emails[0].value});
               console.log("user", user)
               if(user){
+                
                 console.log("user nay da ton tai!");
               }else{
                   user = new Users({

@@ -4,20 +4,18 @@ class userController  {
   
     async getUser(req, res){
         try{
-            const users = await User.find();
-            res.render("views/pages/user", {title: "User Page" , users });
+            const user = await User.findById(req.user.id);
+            console.log(user)
+            res.render("views/pages/profile", { user });
         }catch(error){
             res.status(500).json({ message: "Lỗi khi lấy danh sách user", error });
         }
-    }
-    createUser(req,res){
-     res.json("tao user")
-    }
-    editUser(req,res){
-     res.json("sua user")
-    }
-    deleteUser(req,res){
-     res.json("xoa user")
+    } 
+    logout(req,res){
+        res.clearCookie('token'); // Xóa token cookie
+        req.session?.destroy(() => { // Nếu bạn dùng session
+        res.status(200).json({ message: "Đã logout" });
+        });
     }
  }
  module.exports=new userController;

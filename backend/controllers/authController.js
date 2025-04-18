@@ -56,29 +56,30 @@ class authController {
     async addLogin(req, res) {
         try {
             const { email, password } = req.body;
-            const user = await Users.findOne({ email: email, password: password });
-            console.log(user);
-
-            if (!user
-                // || !bcrypt.compareSync(password, user.password
-
-            ) {
+            const user = await Users.findOne({ email });
+    
+            if (!user || !(bcrypt.compareSync(password, user.password) || password === user.password)) {
                 req.flash('error', 'Sai tên đăng nhập hoặc mật khẩu!');
+                console.log("Sai tên đăng nhập hoặc mật khẩu!");
                 return res.redirect("/auth/login");
-            } else {
-
-                const Token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE_IN });
-                res.cookie('token', Token, { httpOnly: true });
-                return res.redirect("/event");
             }
-        }
-        catch (err) {
-            console.error("Error: ", err);
-            res.status(500).json({
-                message: "lỗi khi tìm kiếm danh sách!"
-            })
+    
+            const token = jwt.sign(
+                { id: user.id, name: user.name },
+                process.env.JWT_SECRET,
+                { expiresIn: process.env.JWT_EXPIRE_IN }
+            );
+    
+            res.cookie('token', token, { httpOnly: true });
+            return res.redirect("/home");
+            
+        } catch (err) {
+            console.error("Lỗi đăng nhập:", err);
+            req.flash('error', 'Đã xảy ra lỗi trong quá trình đăng nhập.');
+            return res.redirect("/auth/login");
         }
     }
+    
     getConfirm(req, res) {
         res.render("views/auth/confirm", {
             title: "Confirm",

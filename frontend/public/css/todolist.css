@@ -1,0 +1,18 @@
+.plan-header {
+    background-color: #212529;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.accordion-button:not(.collapsed) {
+    background-color: #e7f1ff;
+    color: #0c63e4;
+}
+.item-row {
+    border-bottom: 1px solid #e9ecef;
+    padding: 8px 0;
+}
+.item-time {
+    text-align: right;
+    color: #6c757d;
+}

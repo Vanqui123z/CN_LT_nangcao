@@ -1,0 +1,131 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+        background-color: #f8f9fa;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    .container {
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        padding: 40px 20px;
+    }
+    
+    .error-code {
+        font-size: 120px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #3f51b5;
+        text-shadow: 3px 3px 0 #e0e0e0;
+        letter-spacing: -5px;
+    }
+    
+    .error-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #303030;
+    }
+    
+    .error-text {
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: #666;
+        line-height: 1.6;
+    }
+    
+    .home-button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #3f51b5;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 4px 10px rgba(63, 81, 181, 0.3);
+    }
+    
+    .home-button:hover {
+        background-color: #303f9f;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(63, 81, 181, 0.4);
+    }
+    
+    .animation {
+        position: relative;
+        height: 200px;
+        margin-bottom: 30px;
+    }
+    
+    .circle {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-color: rgba(63, 81, 181, 0.1);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse 2s infinite;
+    }
+    
+    .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 60px;
+        color: #3f51b5;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="animation">
+        <div class="circle"></div>
+        <div class="icon">&#9888;</div>
+    </div>
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Không tìm thấy trang</h2>
+    <p class="error-text">Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển. Vui lòng kiểm tra lại URL hoặc quay về trang chủ.</p>
+    <button class="home-button" onclick="redirectToHome()">Quay về trang chủ</button>
+</div>
+
+<script>
+    function redirectToHome() {
+        // Thay đổi URL trang chủ của bạn tại đây
+        window.location.href = '/home';
+    }
+    
+    // Tự động chuyển hướng sau 10 giây
+    setTimeout(function() {
+        redirectToHome();
+    }, 10000);
+</script>

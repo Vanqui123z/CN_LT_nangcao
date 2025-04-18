@@ -13,6 +13,7 @@ const connectDB = require("./config/db")
 const routers = require("./routers/router")
 const sessionMiddleware = require("./middlewares/sessionMiddleware")
 const passportMiddleware = require("./middlewares/passportMiddleware")
+const methodOverride = require('method-override');
 
 
 
@@ -28,6 +29,9 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
+// app.use(methodOverride('_method'));
+
+
 app.use(express.static(path.join(__dirname,"../frontend/public")));
 app.use(cookieParser());
 app.use(flash());

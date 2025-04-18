@@ -1,22 +1,45 @@
-<div>
+<div class="container">
     <h2 class="mb-4">TODOLIST</h2>
-    
+
     <!-- Add Task Input -->
-    <div class="input-group mb-3">
-        <div class="input-group bg-light rounded-pill">
-            <input id="new-task" type="text" class="form-control border-0 bg-transparent rounded-pill" placeholder="Add your task">
-            <span class="input-group-text bg-transparent border-0">I</span>
+    <form action="/todolist/add" method="POST" id="add-task-form">
+        <div class="input-group mb-3">
+            <div class="input-group bg-light rounded-pill">
+                <input id="new-task" type="text" name="title" class="form-control border-0 bg-transparent rounded-pill" placeholder="Add your task" required>
+                <span class="input-group-text bg-transparent border-0">I</span>
+                <button type="submit" class="btn btn-success rounded-circle ms-2" style="width: 40px; height: 40px;">+</button>
+            </div>
         </div>
-        <button onclick="addTodoItem()" class="btn btn-success rounded-circle ms-2" style="width: 40px; height: 40px;">+</button>
-    </div>
-    
+    </form>
+
     <!-- Success Message -->
     <div id="success-message" class="alert alert-success d-none mb-3">
         Todo Item Created Successfully.
     </div>
-    
+
     <!-- Todo Items -->
     <div id="todo-items">
-        <!-- Todo items will be populated by JavaScript -->
+        <% if (eventsList && eventsList.todolist && eventsList.todolist.length > 0) { %>
+            <% eventsList.todolist.forEach(function(task) { %>
+                <div class="task-item d-flex justify-content-between align-items-center mb-2" id="task-<%= task.id %>">
+                    <span class="<%= task.isCompleted ? 'text-decoration-line-through text-muted' : '' %>">
+                        <%= task.title %>
+                    </span>
+                    <div>
+                        <button type="button" class="btn btn-sm text-primary edit-task" data-id="<%= task.id %>">
+                            <i class="bi bi-check-circle"></i>
+                        </button>
+                        
+                        <button type="button" class="btn btn-sm text-danger delete-task" data-id="<%= task.id %>">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>Không có task nào được tìm thấy!</p>
+        <% } %>
     </div>
 </div>
+
+<script src="/js/todolist.js"></script>

@@ -15,10 +15,9 @@ router.get('/confirm', authController.getConfirm);
 
 
 router.get('/google',passportController.googleLogin());    
-router.get('/google/callback',passportController.googleCallback());
+router.get('/google/callback',passportController.googleCallback);
 
 router.get('/github', passportController.githubLogin());
-
-router.get('/github/callback',passportController.githubCallback());
+router.get('/github/callback',passportController.githubCallback);
 
 module.exports = router;

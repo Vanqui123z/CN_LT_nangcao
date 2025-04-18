@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middlewares/authMiddleware")
 const eventController =require("../controllers/eventController");
-const homeController = require("../controllers/homeController");
 
 
 // router.get("/",authMiddleware,eventController.getEvent);
@@ -11,20 +10,13 @@ const homeController = require("../controllers/homeController");
 // router.delete("/delete",authMiddleware,eventController.deleteEvent);
 
 
-router.get("/",eventController.getEvent);
 router.post("/create",eventController.createEvent);
-router.put("/edit",eventController.editEvent);
-router.delete("/delete",eventController.deleteEvent);
+router.put("/update/:id",eventController.updateEvent);
+router.delete("/delete/:id",eventController.deleteEvent);
+router.get("/",eventController.getEvent);
 
 
 
-// router tab
 
-router.get('/calendar',homeController.calendarShow);
 
-router.get('/todolist',homeController.todolistShow);
-
-router.get('/plan',homeController.planShow );
-
-router.get('/profile',homeController.profileShow );
 module.exports = router;

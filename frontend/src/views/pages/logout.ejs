@@ -1,0 +1,44 @@
+<!-- Nút Logout -->
+<button class="btn btn-danger btn sidebar-btn" onclick="confirmLogout()">Logout</button>
+
+<!-- Modal Xác nhận -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xác nhận đăng xuất</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc chắn muốn đăng xuất không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-danger" onclick="logout()">Có</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    function confirmLogout() {
+      var modal = new bootstrap.Modal(document.getElementById('logoutModal'));
+      modal.show();
+    }
+  
+    function logout() {
+      // Gửi yêu cầu đến server để xóa cookie/session
+      fetch('/user/logout', {
+        method: 'POST',
+        credentials: 'include'
+      })
+      .then(() => {
+        window.location.href = '/auth/login';
+      })
+      .catch(err => {
+        console.error("Logout failed:", err);
+      });
+    }
+  </script>
+  

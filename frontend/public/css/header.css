@@ -1,0 +1,26 @@
+
+.dm-month-item, .dm-year-item {
+    cursor: pointer;
+    width: 25%;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+.dm-month-item:hover, .dm-year-item:hover {
+    background-color: #f0f0f0;
+}
+     
+.dm-month-item, .dm-year-item {
+    cursor: pointer;
+    width: 25%;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+.dm-month-item:hover, .dm-year-item:hover {
+    background-color: #f0f0f0;
+}
+.dm-selected-item {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
